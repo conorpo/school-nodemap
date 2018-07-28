@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>School Thing</title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link rel="stylesheet" href="style.css"></link>
+    </head>
+    <body>
+        <div id="menu">
+            <div id="selectedFile" class="card vis">
+                <h4>Select a School</h4>
+                <input list = 'schools' id="schoolInput" type="text" placeholder="School Name">
+                <datalist id='schools'>
+                    <option value="Cypress Creek High School"></option>
+                    <option value="Freedom Loser High SChool"></option>
+                    <option value="Apopka High SChool"></option>
+                </datalist>
+            </div>
+            <div id="schedule"  class="card">
+                <button class="scheduleClass" id="addClass" onclick="addClass()"><h2>Add Class</h2></button>
+            </div>
+            <div id="options"  class="card">Options</div>
+            <div id="generate" class="card">Generate</div>
+            <div id="info">
+                <button onclick="toggleCard('contact')">Contact Us</button>
+                <button onclick="toggleCard('about')">About</button>
+            </div>
+        </div>
+        <div id="contact-about">
+        </div>
+        <div id="zoomControl">
+            <button onclick="zoom({deltaY:-1})">+</button>
+            <button onclick="zoom({deltaY:1})">-</button>
+        </div>
+        <p id="credits">Developed By Conor O'Malley</p>
+        <button type="button" id="menuControl" onclick="toggleMenu()">
+            <img id="buttonImg" src = "assets/arrowLeft.png"/>
+        </button>
+        <canvas id = "myCanvas"></canvas>
+        <script src="js/main.js"></script>
+        <script src="js/canvas.js"></script>
+        <script src="js/dom.js"></script>
+    </body>
+</html>

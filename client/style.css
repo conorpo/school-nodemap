@@ -1,0 +1,259 @@
+
+body{
+  margin:0;
+  overflow:hidden;
+}
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+/* Stuff for button */
+#menuControl{
+    z-index: 1;
+    position: fixed;
+    opacity: 0.6;
+    margin-top:2vh;
+    margin-left: 20%;
+    padding:0;
+    border-style:none;
+    box-shadow: 2px 2px 1px #999999, 0 2px 1px #999999;
+}
+#menuControl:hover{
+    cursor: pointer;
+    transition: 0.6s ease, box-shadow 0.2s;
+    opacity: 1;
+    box-shadow:4px 4px 4px #999999, 0 8px 4px -4px #999999;
+
+}
+#menuControl img{
+    width:40px;
+}
+
+/*Stuff for menu */
+#menu{
+    margin-top:0;
+    z-index:1;
+    width:20vw;
+    height:100%;
+    overflow-y:hidden;
+    position:fixed;
+    float:left;
+    overflow-x:hidden;
+    transition: 0.6s ease;
+    background-color: #EDEDED;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-evenly;
+    align-items:stretch;
+    box-shadow: 2px 0px 10px -5px black;
+}
+#menu div {
+    transition: all 0.2s linear;
+}
+.card{
+    background-color: white;
+    width:18vw;
+    margin: 8px 0.5vw 7px 0.5vw;
+    padding:0.5vw;
+    box-shadow:2px 2px 10px -5px black;
+    border-radius:2px;
+    visibility: hidden;
+    opacity:0;
+    height:0;
+    margin:none;
+}
+.vis{
+    visibility: visible;
+    opacity: 1;
+}
+#schedule{
+    height: 60%;
+}
+#generate{
+    height: 10%;
+}
+#options{
+    height: 20%;
+}
+
+/*Contact/About*/
+#info{
+    background-color: white;
+    z-index: 1;
+    margin-top:10px;
+    height:auto;
+    padding:0;
+    width: 20vw;
+    box-shadow:0px -2px 10px -4px black;
+}
+#info button{
+    font-size: 0.8vw;
+    width: 50%;
+    float:left;
+    height:auto;
+    padding:0.5vw 0px 0.5vw 0px;
+    margin:0;
+    border-style:solid;
+    border-width:-1;
+}
+#info button:hover{
+    cursor:pointer;
+    background-color: #E4E4E4;
+}
+#contact-about{
+    transition: 0.6s ease;
+    opacity:0;
+    visibility: hidden;
+    z-index: 1;
+    position: fixed;
+    bottom:0;
+    margin-bottom:2vh;
+    margin-left: 21%;
+    padding:3px;
+    background-color:#FFFFFF;
+    height:150px;
+    width:200px;
+    box-shadow: 0px 0px 4px 1px #999999;
+}
+
+/*Bottom Right Credit*/
+#credits{
+    z-index:1;
+    position: absolute;
+    bottom:0;
+    right:0;
+    float:right;
+    margin:0;
+    background-color: #DDDDDD;
+    border-style:solid none none solid;
+    border-color:#AAAAAA;
+    border-width:2px;
+    padding: 0px 2px 0px 2px;
+    font-family: Courier;
+    font-size:15px;
+    opacity:0.8;
+}
+
+/*Zoom Controls*/
+#zoomControl{
+    position:fixed;
+    top:2vw;
+    right:2vw;
+    width:2vw;
+    height:4vw;
+    padding:0;
+}
+#zoomControl button{
+    background-color:#FAFAFA;
+    border-style:solid;
+    font-size:1vw;
+    height:50%;
+    width:100%;
+    padding:0;
+    margin:0;
+}
+#zoomControl button:nth-child(2){
+    border-top:none;
+    font-size:1.2vw;
+}
+#zoomControl button:hover{
+    cursor:pointer;
+    background-color: #EEEEEE;
+}
+
+canvas{
+    z-index:0;
+    margin:0;
+    width:100%;
+    height:100%;
+}
+
+/*File Select Menu option*/
+#selectedFile{
+    height: auto;
+}
+#selectedFile h4{
+    width:37%;
+    font-size:0.8vw;
+    margin:auto;
+    margin-bottom:4px;
+}
+#selectedFile input{
+    padding:0px 1% 0px 1%;
+    width:98%;
+    height:1.5vw;
+    font-size:1.1vw;
+}
+input.invalid{
+    border-width: 1px;
+    border-style:solid;
+    border-color: #FF9999;
+    background-color: rgba(255,0,0,0.1);
+}
+input.valid{
+    background-color: transparent;
+    border-style:none;
+}
+
+/*Schedule*/
+#addClass{
+    width:135px;
+    margin: 0px 5px 0px 5px;
+    height:25px;
+    border-radius:2px;
+}
+#addClass h2{
+    font-size:17px;
+    width:100%;
+}
+#addClass:hover{
+    cursor:pointer;
+}
+#schedule{
+    overflow-y:auto;
+}
+.scheduleClass:nth-child(1){
+    margin-top:0;
+}
+/*Schedule Elements*/
+.scheduleClass{
+    border-style:solid;
+    border-width:2px;
+    border-radius:4px;
+    box-shadow:2px 2px 5px -1px black;
+    background-color:#F4F4F4;
+    height: 35px;
+    margin: 13px 5px 13px 5px;
+}
+.scheduleClass h2{
+    width:15%;
+    font-size:27px;
+    margin:0;
+    float:left;
+    margin-left:2%;
+}
+.scheduleClass input{
+    background-color: transparent;
+    margin-left:3%;
+    font-size:23px;
+    border-style:none;
+    border-left-style:solid;
+    padding:0;
+    padding-left:5px;
+    height:100%;
+    width:60%;
+}
+.scheduleClass button{
+    padding:4px;
+    float:right;
+    opacity:0.8;
+    background:transparent;
+    border-style:none;
+    height:100%;
+}
+.scheduleClass button img{
+    height:100%;
+    filter: brightness(90%);
+}
+.scheduleClass button:hover{
+    cursor:pointer;
+}
