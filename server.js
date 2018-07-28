@@ -1,6 +1,7 @@
 const express = require('express');
-const config  = require('./config')
 const fs = require('fs');
+const port = process.env.PORT || 3000;
+
 
 var app = express();
 app.use(function(req,res,next){
@@ -22,6 +23,6 @@ app.get('/', function(req,res){
 });
 
 //Starts server
-app.listen(config.httpPort,function(){
-    console.log('Listening on port:',config.httpPort);
+app.listen(port,function(){
+    console.log('Listening on port:',port);
 });
