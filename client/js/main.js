@@ -30,7 +30,7 @@ var nodemap = {};
         },
         iCard:0,
         contact_about:false,
-        schools: ['Cypress Creek High School','Freedom Loser High SChool','Apopka High SChool'],
+        schools: ['Cypress Creek High School','Freedom High SChool','Apopka High SChool'],
         progress:0,
         schedule:[],
         colorCounter: 0,
