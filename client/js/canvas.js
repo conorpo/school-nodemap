@@ -4,15 +4,27 @@ function draw(){
     map.ctx.translate(map.currentOrigin.x,map.currentOrigin.y);
     map.ctx.scale(map.currentOrigin.scale,map.currentOrigin.scale);
     map.ctx.drawImage(map.img,0,0);
-    for(i of menu.schedule){
+    for(let i of menu.schedule){
         if(i.ref != -1){
             let node  =  nodemap.nodes[i.ref];
             map.ctx.beginPath();
-            map.ctx.arc(node.x+660,node.y+453,10,0,Math.PI*2);
+            map.ctx.arc(node.x,node.y,10,0,Math.PI*2);
             map.ctx.closePath();
             map.ctx.fillStyle = i.color;
             map.ctx.fill();
         }
+    }
+    for(var i = 0; i<map.transitions.length;i++){
+        let tran = map.transitions[i];
+        map.ctx.beginPath();
+        map.ctx.moveTo(nodemap.nodes[tran[0]].x,nodemap.nodes[tran[0]].y);
+        for(let ii = 1; ii<tran.length;ii++){
+            let node = nodemap.nodes[tran[ii]];
+            map.ctx.lineTo(node.x,node.y);
+        }
+        map.ctx.strokeStyle=[menu.schedule[i].color];
+        map.ctx.lineWidth=3;
+        map.ctx.stroke();
     }
     window.requestAnimationFrame(draw);
 }
@@ -53,7 +65,6 @@ map.canvas.addEventListener('mousemove', function(evt){
     }
 },false);
 map.canvas.addEventListener('mousedown', function(evt){
-    console.log("test");
     map.originOffset = {x:map.coors.ax-map.currentOrigin.x,y:map.coors.ay-map.currentOrigin.y};
     map.screenBeingDragged = true;
 },false);

@@ -10,19 +10,25 @@ var nodemap = {};
         currentOrigin: {x:0,y:0,scale:1},
         coors: {x:0,y:0,ax:0,ay:0},
         originOffset: {x:0,y:0},
-        screenBeingDragged: false
+        screenBeingDragged: false,
+        transitions: []
     }
     map.canvas.width = map.w;
     map.canvas.height= map.h;
     map.ctx = map.canvas.getContext('2d');
-    map.img.src = "assets/dasda.png";
+    map.currentOrigin = {x:(map.w/2)-320,y:(map.h/2)-25,scale:1};
+    map.img.src = "assets/select.png";
+    //Get school data
     menu = {
         menuEnabled:true,
         cards:{
             selectedFile:true,
             schedule:false,
             options:false,
-            generate:false
+            generate:false,
+            transitions:false,
+            stats:false,
+            again:false
         },
         infos:{
             contact:'Contact Us at this random site',
@@ -30,304 +36,24 @@ var nodemap = {};
         },
         iCard:0,
         contact_about:false,
-        schools: ['Cypress Creek High School','Freedom High SChool','Apopka High SChool'],
+        schools: [],
         progress:0,
         schedule:[],
         colorCounter: 0,
         possibleColors:["#ff595e","#f79256","#ffca3a","#8ac926","#1982c4","#6a4c93","#565554"]
     }
-    nodemap = {
-          "currentOrigin": {
-            "x": 881.8856978814363,
-            "y": 573.835101306646,
-            "scale": 1
-          },
-          "nodes": [
-            {
-              "classroom": null,
-              "x": -574.1152943858274,
-              "y": -305.43453034059496,
-              "radius": 10,
-              "color": "#000080",
-              "name": "Biology",
-              "type": 1,
-              "floor": 1,
-              "class": "Classroom 7"
-            },
-            {
-              "classroom": null,
-              "x": -584.1013551030758,
-              "y": -53.99607724228679,
-              "radius": 10,
-              "color": "#000080",
-              "name": "Phyisics",
-              "type": 1,
-              "floor": 1,
-              "class": "Classroom 5"
-            },
-            {
-              "classroom": null,
-              "x": -574.1152943858274,
-              "y": -187.6974769056729,
-              "radius": 10,
-              "color": "#008000",
-              "name": "Hallway 1",
-              "type": 0,
-              "floor": 1
-            },
-            {
-              "classroom": null,
-              "x": -406.3494743360556,
-              "y": -419.180497218401,
-              "radius": 19,
-              "color": "#008000",
-              "name": "Main Building",
-              "type": 0,
-              "floor": 1
-            },
-            {
-              "classroom": null,
-              "x": -285.51813965735084,
-              "y": -186.6997052663939,
-              "radius": 10,
-              "color": "#008000",
-              "name": "Hallway 2",
-              "type": 0,
-              "floor": 1
-            },
-            {
-              "classroom": null,
-              "x": -434.3104443443509,
-              "y": -117.85346215614288,
-              "radius": 10,
-              "color": "#008000",
-              "name": "Gym",
-              "type": 0,
-              "floor": 1
-            },
-            {
-              "classroom": null,
-              "x": -432.3132322009012,
-              "y": 6.86799275373221,
-              "radius": 10,
-              "color": "#000080",
-              "name": "Math",
-              "type": 1,
-              "floor": 1,
-              "class": "Classroom 3"
-            },
-            {
-              "classroom": null,
-              "x": -191.6491689152166,
-              "y": -261.5325782123189,
-              "radius": 10,
-              "color": "#000080",
-              "name": "English",
-              "type": 1,
-              "floor": 1,
-              "class": "Classroom 4"
-            },
-            {
-              "classroom": null,
-              "x": -191.6491689152166,
-              "y": -116.85569051686389,
-              "radius": 10,
-              "color": "#000080",
-              "name": "Spanish",
-              "type": 1,
-              "floor": 1,
-              "class": "Classroom 2"
-            },
-            {
-              "classroom": null,
-              "x": -116.75371353585422,
-              "y": -388.24957640075195,
-              "radius": 10,
-              "color": "#008000",
-              "name": "Hallway C",
-              "type": 0,
-              "floor": 1
-            },
-            {
-              "classroom": null,
-              "x": -288.5139578725254,
-              "y": -345.34539591175496,
-              "radius": 10,
-              "color": "#008000",
-              "name": "Shortcut A",
-              "type": 0,
-              "floor": 1
-            },
-            {
-              "classroom": null,
-              "x": 29.042772935971243,
-              "y": -388.24957640075195,
-              "radius": 10,
-              "color": "#000080",
-              "name": "History",
-              "type": 1,
-              "floor": 1,
-              "class": "Classroom 1"
-            },
-            {
-              "classroom": null,
-              "x": -693.9480229928073,
-              "y": -186.69970526639383,
-              "radius": 10,
-              "color": "#000080",
-              "name": "Chemistry",
-              "type": 1,
-              "floor": 1,
-              "class": "Classroom 6"
-            },
-            {
-              "classroom": null,
-              "x": -633.0330526175926,
-              "y": -333.3721362404069,
-              "radius": 10,
-              "color": "#008000",
-              "name": "New Node",
-              "type": 0,
-              "floor": 1
-            },
-            {
-              "classroom": null,
-              "x": -594.087415820324,
-              "y": -131.82226510604886,
-              "radius": 10,
-              "color": "#008000",
-              "name": "New Node",
-              "type": 0,
-              "floor": 1
-            }
-          ],
-          "paths": [
-            [
-              12,
-              2,
-              119.8368824429201,
-              119.8368824429201
-            ],
-            [
-              2,
-              0,
-              117.73705343492207,
-              117.73705343492207
-            ],
-            [
-              2,
-              1,
-              134.07380684010235,
-              134.07380684010235
-            ],
-            [
-              2,
-              5,
-              156.28046100345458,
-              156.28046100345458
-            ],
-            [
-              5,
-              4,
-              163.94802568028945,
-              163.94802568028945
-            ],
-            [
-              4,
-              2,
-              288.5988795293848,
-              288.5988795293848
-            ],
-            [
-              2,
-              3,
-              285.8841707231712,
-              285.8841707231712
-            ],
-            [
-              4,
-              10,
-              158.67397419590264,
-              158.67397419590264
-            ],
-            [
-              3,
-              10,
-              139.05693483314516,
-              139.05693483314516
-            ],
-            [
-              4,
-              3,
-              262.0067366822265,
-              262.0067366822265
-            ],
-            [
-              10,
-              9,
-              177.03770852003652,
-              177.03770852003652
-            ],
-            [
-              9,
-              3,
-              291.2428995461952,
-              291.2428995461952
-            ],
-            [
-              9,
-              11,
-              145.79648647182546,
-              145.79648647182546
-            ],
-            [
-              4,
-              7,
-              120.0472512868521,
-              120.0472512868521
-            ],
-            [
-              8,
-              4,
-              117.00243614780088,
-              117.00243614780088
-            ],
-            [
-              5,
-              6,
-              124.73744494409827,
-              124.73744494409827
-            ]
-          ],
-          "classrooms": [
-            "Classroom 1",
-            "Classroom 2",
-            "Classroom 3",
-            "Classroom 4",
-            "Classroom 5",
-            "Classroom 6",
-            "Classroom 7"
-          ],
-          "gridSettings": {
-            "floors": "1",
-            "grid": false,
-            "gridText": false,
-            "gridSnap": false,
-            "backGround": false,
-            "bgScale": "1",
-            "bgOpacity": "0.5",
-            "squareSize": 100,
-            "gridInside": 4
-          }
+    fetch(window.location.href + 'schools')
+    .then(function(res){ return res.text() })
+    .then(function(data){
+        var schoolData = JSON.parse(data);
+        var datalist = document.getElementById('schools');
+        for(school of schoolData){
+            menu.schools.push(school.name);
+            var option = document.createElement('OPTION');
+            option.value = school.name;
+            datalist.append(option);
         }
-    let datalist = document.createElement("DATALIST");
-    datalist.id = "availableClasses";
-    for(classroom of nodemap.classrooms){
-        let option = document.createElement("OPTION");
-        option.value = classroom;
-        datalist.appendChild(option);
-    };
-    document.getElementById("schedule").appendChild(datalist);
+    });
 }());
 
 function validateSchool(){
@@ -352,9 +78,24 @@ function validateSchool(){
             selectedFile.children[0].style.display='none';
             schoolInput.title="";
             menu.cards.schedule = true;
-            addClass();
             enableCard();
             //Get School Data
+            let schoolQuery = schoolInput.value.trim().replace().split(' ').join('+');
+            fetch(window.location.href + 'schools?school='+schoolQuery)
+            .then(function(res){return res.json()})
+            .then(function(data){
+                nodemap = data.nodemap;
+                map.img.src = 'assets/'+data.imagePath;
+                let datalist = document.getElementById("availableClasses");
+                while (datalist.firstChild) {
+                    datalist.removeChild(myNode.firstChild);
+                }
+                for(classroom of nodemap.classrooms){
+                    let option = document.createElement("OPTION");
+                    option.value = classroom;
+                    datalist.appendChild(option);
+                };
+            });
         }
     }else{
         menu.progress = 0;
@@ -364,6 +105,10 @@ function validateSchool(){
         schoolInput.classList.add('invalid');
         selectedFile.children[0].style.display='block';
         schoolInput.title="Please enter a valid school name.";
+        menu.cards.schedule = false;
+        menu.cards.options = false;
+        menu.cards.generate = false;
+        disableFalseCards();
     }
 }
 function addClass(){
@@ -376,12 +121,18 @@ function addClass(){
     room.style.borderLeftColor = color;
     room.setAttribute("list","availableClasses");
     room.addEventListener('input',function(evt){
+        let ref = false;
         for(var i = 0; i<nodemap.nodes.length; i++){
             var node = nodemap.nodes[i];
             if(node.class && evt.target.value.trim() == node.class.trim()){
                 let period = evt.target.parentElement.children[0].innerHTML.split('');
                 menu.schedule[period[period.length-1]-1].ref = i;
+                ref = true;
             }
+        }
+        if(!ref){
+            let period = evt.target.parentElement.children[0].innerHTML.split('');
+            menu.schedule[period[period.length-1]-1].ref = -1;
         }
     },false);
     let del = document.createElement("BUTTON");
@@ -393,9 +144,13 @@ function addClass(){
         menu.schedule.splice(period[period.length-1]-1,1);
         document.getElementById("schedule").removeChild(evt.target.parentElement);
         for(var i = 1; i<=menu.schedule.length;i++){
-            console.log('P' + String(i));
             document.getElementById("schedule").children[i-1].children[0].innerHTML = 'P' + String(i);
         };
+        if(menu.schedule.length < 2 && menu.progress > 1){
+            menu.cards.options = false;
+            menu.cards.generate = false;
+            disableFalseCards();
+        }
     },false);
     let newClass = document.createElement("DIV");
     newClass.style.borderColor = color;
@@ -406,4 +161,83 @@ function addClass(){
     let button = document.getElementById("schedule").children[menu.schedule.length];
     document.getElementById("schedule").insertBefore(newClass, button);
     menu.schedule.push({ref:-1,color:color});
+    if(menu.schedule.length > 1 && menu.progress < 2){
+        menu.progress = 2;
+        menu.cards.options = true;
+        menu.cards.generate = true;
+        enableCard();
+    }
+}
+function pathAlgo(){
+    let valid = true;
+    for(classroom of menu.schedule){
+        if(classroom.ref == -1){
+            valid = false;
+        }
+    }
+    if(valid){
+        for(var i = 0; i<menu.schedule.length-1;i++){
+            let start = menu.schedule[i].ref;
+            let end = menu.schedule[i+1].ref;
+            for(let node of nodemap.nodes){
+                node.visited = false;
+                node.score = Number.MAX_SAFE_INTEGER;
+                node.pathTo = [];
+            }
+            let found = false;
+            nodemap.nodes[start].score = 0;
+            let currentNode = start;
+            while(currentNode != end){
+                nodemap.nodes[currentNode].visited = true;
+                let neighbors = [];
+                for(let path of nodemap.paths){
+                    let neighbor = false;
+                    if(path[0] == currentNode && !nodemap.nodes[path[1]].visited){
+                        neighbor = path[1];
+
+                    }else if(path[1] == currentNode && !nodemap.nodes[path[0]].visited){
+                        neighbor = path[0];
+                    }
+                    if(neighbor !== false){
+                        if(path[2] + nodemap.nodes[currentNode].score < nodemap.nodes[neighbor].score){
+                            nodemap.nodes[neighbor].score = path[2] + nodemap.nodes[currentNode].score;
+                            nodemap.nodes[neighbor].pathTo = nodemap.nodes[currentNode].pathTo.concat([neighbor]);
+                        }
+                        neighbors.push(neighbor);
+                    }
+                }
+                let lowestScore = Number.MAX_SAFE_INTEGER;
+                let lowestRef = -1;
+                for(var iii = 0; iii<nodemap.nodes.length; iii++){
+                    let node = nodemap.nodes[iii];
+                    if(!node.visited && node.score < lowestScore){
+                        lowestScore = node.score;
+                        lowestRef = iii;
+                    }
+                }
+                currentNode = lowestRef;
+            }
+            console.log('FINISHED', nodemap.nodes[end].pathTo);
+            map.transitions.push([start].concat(nodemap.nodes[end].pathTo));
+        }
+        menu.cards =  {
+            selectedFile:true,
+            schedule:false,
+            options:false,
+            generate:false,
+            transitions:true,
+            stats:true,
+            again:true
+        }
+        document.getElementById('schedule').classList.add('disp');
+        document.getElementById('options').classList.add('disp');
+        document.getElementById('generate').classList.add('disp');
+        document.getElementById('transitions').classList.remove('disp');
+        document.getElementById('stats').classList.remove('disp');
+        document.getElementById('again').classList.remove('disp');
+        disableFalseCards();
+        enableCard();
+    }else{
+        alert('Your schedule is not valid');
+    }
 }

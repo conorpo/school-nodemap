@@ -1,0 +1,277 @@
+const mongoose = require('mongoose');
+mongoose.connect('mongodb+srv://conorpo:oxbuwAJqAhSToina@school-nodemap-og5hx.mongodb.net/test?retryWrites=true');
+var mongoo = {};
+mongoo.School = mongoose.model('schools',{
+    name: {
+        type: String
+    },
+    nodemap:{
+        type: Object
+    },
+    active:{
+        type: Boolean
+    },
+    imagePath:{
+        type: String
+    },
+    count:{
+        type: Number
+    }
+});
+var newSchool = new mongoo.School({
+    name:'Test School Main',
+    nodemap: {
+      "currentOrigin":{
+          "x":23.58591434851283,
+          "y":113.21122761822147,
+          "scale":1.2762815625000004}
+      ,
+      "nodes":[
+        {
+          "classroom":null,
+          "x":462.09469560150694,
+          "y":207.315154382851,
+          "radius":10,
+          "color":"#000080",
+          "name":"Algebra",
+          "type":1,
+          "floor":1,
+          "class":"301"}
+        ,
+        {
+          "classroom":null,
+          "x":653.0046763060981,
+          "y":66.87029814261663,
+          "radius":10,
+          "color":"#000080",
+          "name":"English",
+          "type":1,
+          "floor":1,
+          "class":"401"}
+        ,
+        {
+          "classroom":null,
+          "x":461.3083494443802,
+          "y":297.495453465508,
+          "radius":10,
+          "color":"#000080",
+          "name":"Calc",
+          "type":1,
+          "floor":1,
+          "class":"302"}
+        ,
+        {
+          "classroom":null,
+          "x":155.3766604528226,
+          "y":186.48266683550605,
+          "radius":10,
+          "color":"#000080",
+          "name":"Chemistry",
+          "type":1,
+          "floor":1,
+          "class":"201"}
+        ,
+        {
+          "classroom":null,
+          "x":110.77792318295359,
+          "y":259.9700044638172,
+          "radius":10,
+          "color":"#000080",
+          "name":"Biology",
+          "type":1,
+          "floor":1,
+          "class":"202"}
+        ,
+        {
+          "classroom":null,
+          "x":156.94152842720396,
+          "y":330.3302213419875,
+          "radius":10,
+          "color":"#000080",
+          "name":"Physics",
+          "type":1,
+          "floor":1,
+          "class":"203"}
+        ,
+        {
+          "classroom":null,
+          "x":269.6120225826626,
+          "y":389.7455155946646,
+          "radius":10,
+          "color":"#000080",
+          "name":"Admin",
+          "type":1,
+          "floor":1,
+          "class":"101"}
+        ,
+        {
+          "classroom":null,
+          "x":271.9593245442346,
+          "y":308.44037609100116,
+          "radius":10,
+          "color":"#008000",
+          "name":"New Node",
+          "type":0,
+          "floor":1}
+        ,
+        {
+          "classroom":null,
+          "x":157.7239624143947,
+          "y":249.02508183832407,
+          "radius":10,
+          "color":"#008000",
+          "name":"New Node",
+          "type":0,
+          "floor":1}
+        ,
+        {
+          "classroom":null,
+          "x":404.1906683794603,
+          "y":249.02508183832407,
+          "radius":10,
+          "color":"#008000",
+          "name":"New Node",
+          "type":0,
+          "floor":1}
+        ,
+        {
+          "classroom":null,
+          "x":300.12694808309925,
+          "y":34.817310453672405,
+          "radius":10,
+          "color":"#008000",
+          "name":"New Node",
+          "type":0,
+          "floor":1}
+        ,
+        {
+          "classroom":null,
+          "x":548.1585220225463,
+          "y":66.08851795508139,
+          "radius":10,
+          "color":"#008000",
+          "name":"New Node",
+          "type":0,
+          "floor":1}
+        ,
+        {
+          "classroom":null,
+          "x":404.973102366651,
+          "y":106.74108770691309,
+          "radius":10,
+          "color":"#008000",
+          "name":"New Node",
+          "type":0,
+          "floor":1}
+        ]
+      ,
+      "paths":[
+        [
+          10,
+          8,
+          257.22282101116235]
+        ,
+        [
+          8,
+          3,
+          62.58644822070922]
+        ,
+        [
+          8,
+          4,
+          48.20499902290258]
+        ,
+        [
+          8,
+          5,
+          81.3089042642593]
+        ,
+        [
+          8,
+          7,
+          128.7629416876916]
+        ,
+        [
+          7,
+          6,
+          81.33901607598271]
+        ,
+        [
+          7,
+          9,
+          144.96656677869515]
+        ,
+        [
+          9,
+          2,
+          74.9119911356735]
+        ,
+        [
+          9,
+          0,
+          71.36241599660387]
+        ,
+        [
+          9,
+          12,
+          142.2861454567229]
+        ,
+        [
+          12,
+          10,
+          127.14458620965394]
+        ,
+        [
+          10,
+          9,
+          238.14749044131972]
+        ,
+        [
+          10,
+          11,
+          249.99510013093374]
+        ,
+        [
+          11,
+          12,
+          148.84453577294127]
+        ,
+        [
+          11,
+          1,
+          104.84906889577972]
+        ,
+        [
+          8,
+          9,
+          246.46670596506561]
+        ]
+      ,
+      "classrooms":[
+        "201",
+        "202",
+        "203",
+        "301",
+        "302",
+        "401",
+        "101"]
+      ,
+      "gridSettings":{
+        "floors":"1",
+        "grid":true,
+        "gridText":false,
+        "gridSnap":false,
+        "backGround":true,
+        "bgScale":"1",
+        "bgOpacity":"0.75",
+        "squareSize":127.62815625000003,
+        "gridInside":5}},
+    active:true,
+    imagePath:'dasda.png',
+    count:0
+});
+newSchool.save().then(function(doc){
+    console.log('Made new school',doc)
+},function(e){
+    console.log('Couldnt save')
+});

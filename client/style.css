@@ -65,14 +65,21 @@ body{
     visibility: visible;
     opacity: 1;
 }
-#schedule{
-    height: 60%;
+.disp{
+    display:none;
+
 }
 #generate{
     height: 10%;
 }
 #options{
     height: 20%;
+}
+#stats{
+    height: 20%;
+}
+#again{
+    height:10%;
 }
 
 /*Contact/About*/
@@ -209,6 +216,7 @@ input.valid{
     cursor:pointer;
 }
 #schedule{
+    height: 60%;
     overflow-y:auto;
 }
 .scheduleClass:nth-child(1){
@@ -256,4 +264,19 @@ input.valid{
 }
 .scheduleClass button:hover{
     cursor:pointer;
+}
+
+/*Transitions*/
+#transitions{
+    overflow-y:auto;
+    height:60%;
+}
+/*Transition Element*/
+.transition{
+    padding:5px;
+    width:90%;
+    height:20px;
+    background-color:#F4F4F4;
+    border-radius:3px;
+    box-shadow:2px 2px 5px -1px black;
 }

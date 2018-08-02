@@ -12,16 +12,19 @@
                 <h4>Select a School</h4>
                 <input list = 'schools' id="schoolInput" type="text" placeholder="School Name">
                 <datalist id='schools'>
-                    <option value="Cypress Creek High School"></option>
-                    <option value="Freedom High SChool"></option>
-                    <option value="Apopka High SChool"></option>
                 </datalist>
             </div>
             <div id="schedule"  class="card">
                 <button class="scheduleClass" id="addClass" onclick="addClass()"><h2>Add Class</h2></button>
+                <datalist id='availableClasses'></datalist>
             </div>
             <div id="options"  class="card">Options</div>
-            <div id="generate" class="card">Generate</div>
+            <div id="generate" class="card">
+                <button onclick='pathAlgo()'>Generate!</button>
+            </div>
+            <div id="transitions" class="card disp"><div class="transition">Transtion 1</div> </div>
+            <div id="stats" class="card disp"> Stats </div>
+            <div id="again" class="card disp"> Try Again </div>
             <div id="info">
                 <button onclick="toggleCard('contact')">Contact Us</button>
                 <button onclick="toggleCard('about')">About</button>

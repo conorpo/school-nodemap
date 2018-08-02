@@ -31,6 +31,13 @@ function toggleMenu(){
         setTimeout(enableCard,300);
     }
 }
+function disableFalseCards(){
+    for(let card in menu.cards){
+        if(!menu.cards[card]){
+            document.getElementById(card).classList.remove("vis");
+        }
+    }
+}
 function enableCard(){
     var timeout = 150;
     if(menu.menuEnabled && menu.cards[Object.keys(menu.cards)[menu.iCard]]){
@@ -39,12 +46,11 @@ function enableCard(){
         timeout = 0;
     }
     menu.iCard++;
-    if(menu.iCard>=6){
+    if(menu.iCard>=7){
         menu.iCard = 0;
     }else{
         setTimeout(enableCard,timeout);
     }
-
 }
 function toggleCard(card){
     if(card == menu.contact_about){
