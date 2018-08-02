@@ -3,8 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');
 const port = process.env.PORT || 3002;
+console.log(process.env.MONGO_URI);
 const mongoC =  process.env.MONGO_URI;
-
 //Setting Up Database
 mongoose.connect(mongoC);
 var mongoo = {};
@@ -67,8 +67,10 @@ app.get('/schools',function(req,res){
             }
         })
     }else{
+        console.log('Getting all schools');
         mongoo.School.find({active:true},'name',function(err,schools){
             if(err){
+                console.log('Couldnt get schools');
                 res.status(404).send("Couldn't get the schools");
             }else{
                 res.send(schools);
